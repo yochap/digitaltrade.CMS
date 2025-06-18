@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "homepage"
+    label: "首页内容"
+    files:
+      - file: "content/homepage.md"
+        label: "首页文字"
+        name: "homepage"
+        fields:
+          - {label: "标题", name: "title", widget: "string"}
+          - {label: "副标题", name: "subtitle", widget: "string"}
+          - {label: "简介", name: "intro", widget: "text"}
+
+  - name: "quotes"
+    label: "总书记语录"
+    files:
+      - file: "content/quotes.md"
+        label: "语录内容"
+        name: "quotes"
+        fields:
+          - {label: "内容列表", name: "items", widget: "list", fields: [
+              {label: "标题", name: "quote_title", widget: "string"},
+              {label: "内容", name: "quote_body", widget: "text"}
+            ]}

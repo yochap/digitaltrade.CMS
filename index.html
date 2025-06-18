@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球数字贸易创新港</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 头部导航 */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px 0;
+            margin-right: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 15px;
+            display: block;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-1px);
+        }
+
+        /* 首页横幅轮播 */
+        .hero-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* ===========================================
+        轮播图背景图片优化样式
+        =========================================== */
+
+        /* 第一张轮播图 - 总书记贺信 */
+        .slide-1 {
+            /* 备用渐变背景（图片加载失败时显示） */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* 使用伪元素设置第一张轮播图背景 */
+        .slide-1::before {
+            content: '';                    /* 必需的空内容 */
+            position: absolute;             /* 绝对定位覆盖整个父元素 */
+            top: 0;                        /* 顶部对齐 */
+            left: 0;                       /* 左侧对齐 */
+            right: 0;                      /* 右侧对齐 */
+            bottom: 0;                     /* 底部对齐 */
+            background-image: url("https://i.ibb.co/YBbh2VdL/MAIN17024806710981-TQFM74-ERZ-2.jpg");
+            background-size: cover;         /* 图片覆盖整个容器，保持比例 */
+            background-position: center center;  /* 图片居中显示 */
+            background-repeat: no-repeat;   /* 不重复显示图片 */
+            z-index: 1;                    /* 层级1，在渐变背景之上 */
+        }
+
+        /* 第二张轮播图 - 数字贸易战略定位 */
+        .slide-2 {
+            /* 备用渐变背景（图片加载失败时显示） */
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        /* 使用伪元素设置第二张轮播图背景 */
+        .slide-2::before {
+            content: '';                    /* 必需的空内容 */
+            position: absolute;             /* 绝对定位覆盖整个父元素 */
+            top: 0;                        /* 顶部对齐 */
+            left: 0;                       /* 左侧对齐 */
+            right: 0;                      /* 右侧对齐 */
+            bottom: 0;                     /* 底部对齐 */
+            background-image: url("https://img2.baidu.com/it/u=3629217437,1025540008&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500");
+            background-size: cover;         /* 图片覆盖整个容器，保持比例 */
+            background-position: center center;  /* 图片居中显示 */
+            background-repeat: no-repeat;   /* 不重复显示图片 */
+            z-index: 1;                    /* 层级1，在渐变背景之上 */
+        }
+
+        /* 第三张轮播图 - 党中央重要指示 */
+        .slide-3 {
+            /* 备用渐变背景（图片加载失败时显示） */
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* 使用伪元素设置第三张轮播图背景 */
+        .slide-3::before {
+            content: '';                    /* 必需的空内容 */
+            position: absolute;             /* 绝对定位覆盖整个父元素 */
+            top: 0;                        /* 顶部对齐 */
+            left: 0;                       /* 左侧对齐 */
+            right: 0;                      /* 右侧对齐 */
+            bottom: 0;                     /* 底部对齐 */
+            background-image: url("https://www.cnr.cn/zgxc/gundong/20151226/W020151226817434421453.jpg");
+            background-size: cover;         /* 图片覆盖整个容器，保持比例 */
+            background-position: center center;  /* 图片居中显示 */
+            background-repeat: no-repeat;   /* 不重复显示图片 */
+            z-index: 1;                    /* 层级1，在渐变背景之上 */
+        }
+
+        /* 添加半透明覆盖层，确保文字清晰可读 */
+        .slide::after {
+            content: '';                    /* 必需的空内容 */
+            position: absolute;             /* 绝对定位覆盖整个父元素 */
+            top: 0;                        /* 顶部对齐 */
+            left: 0;                       /* 左侧对齐 */
+            right: 0;                      /* 右侧对齐 */
+            bottom: 0;                     /* 底部对齐 */
+            background: rgba(0, 0, 0, 0.3); /* 30%透明度的黑色覆盖层 */
+            z-index: 2;                    /* 层级2，在背景图片之上 */
+        }
+
+        /* 轮播图文字内容样式 */
+        .slide-content {
+            text-align: center;             /* 文字居中对齐 */
+            color: white;                   /* 文字颜色为白色 */
+            max-width: 800px;              /* 最大宽度800px */
+            padding: 0 20px;               /* 左右内边距20px */
+            position: relative;             /* 相对定位 */
+            z-index: 3;                    /* 层级3，确保文字在最上层显示 */
+        }
+ 
+        .slide-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slide-subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .subsection {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .subsection:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .subsection h3 {
+            color: #2a5298;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2a5298;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.3);
+        }
+
+        /* 时间轴组件 */
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #2a5298, #1e3c72);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 80px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #2a5298;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+        }
+
+        /* 首页特色模块 */
+        .home-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .highlight-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #2a5298;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .highlight-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 数据可视化样式 */
+        .data-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .data-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .data-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+         /* 数贸在线特殊样式 */
+        .online-section {
+            display: none;
+        }
+
+        .online-section.active {
+            display: block;
+        }
+
+        .online-nav-btn {
+            transition: all 0.3s ease;
+        }
+
+        .online-nav-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .online-nav-btn.active {
+            background: #2a5298 !important;
+            color: white !important;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .slide-title {
+                font-size: 32px;
+            }
+
+            .slide-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 在线客服浮动按钮 */
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* 隐藏/显示功能 */
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">🌐 全球数字贸易创新港</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('home')">首页</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('secretary-quotes')">总书记语录</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('digital-trade')">数字贸易</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('trade-expo')">数贸会</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('international-news')">国际资讯与动态</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('one-three-six')">一会三区六基地</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('action-plan')">三年行动计划</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('policies')">政策条例</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('investment')">数贸招商</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('online-services')">在线服务</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('tech-overseas')">科技出海产品</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('debuts')">首发首秀</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页 - 总书记语录 -->
+    <div id="home" class="content-section active">
+        <!-- 首页横幅轮播 -->
+        <section class="hero-section">
+            <div class="slider">
+                <div class="slide slide-1 active">
+                    <div class="slide-content">
+                        <h1 class="slide-title">总书记致全球数字贸易博览会贺信</h1>
+                        <p class="slide-subtitle">"发展数字贸易，加快建设贸易强国"</p>
+                    </div>
+                </div>
+                <div class="slide slide-2">
+                    <div class="slide-content">
+                        <h1 class="slide-title">数字贸易战略定位</h1>
+                        <p class="slide-subtitle">与货物贸易、服务贸易并列的国家贸易结构重要组成</p>
+                    </div>
+                </div>
+                <div class="slide slide-3">
+                    <div class="slide-content">
+                        <h1 class="slide-title">党中央重要指示</h1>
+                        <p class="slide-subtitle">推动数字贸易高质量发展，构建贸易强国</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <span class="slider-dot active" onclick="goToSlide(0)"></span>
+                <span class="slider-dot" onclick="goToSlide(1)"></span>
+                <span class="slider-dot" onclick="goToSlide(2)"></span>
+            </div>
+        </section>
+
+        <!-- 总书记语录核心内容 -->
+        <div class="main-content">
+            <h2 class="section-title">总书记语录</h2>
+            
+            <div class="subsection">
+                <h3>数字贸易战略定位</h3>
+                <div class="feature-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 40px;">
+                    <h4>三大贸易支柱</h4>
+                    <div style="display: flex; justify-content: space-around; margin-top: 30px;">
+                        <div>
+                            <div style="font-size: 24px; margin-bottom: 10px;">📦</div>
+                            <div>货物贸易</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 24px; margin-bottom: 10px;">🛠️</div>
+                            <div>服务贸易</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 24px; margin-bottom: 10px;">💻</div>
+                            <div>数字贸易</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>党中央重要指示</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>"发展数字贸易，加快建设贸易强国"</h4>
+                            <p>习近平总书记强调，要推动数字经济和实体经济深度融合，发展数字贸易，提升贸易数字化水平，加快建设贸易强国。</p>
+                            <button class="btn" onclick="expandQuote('trade-power')">查看全文</button>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>2024年全球数字贸易博览会贺信</h4>
+                            <p>习近平主席在贺信中指出，数字贸易是推动经济全球化的重要力量，要加强数字贸易国际合作，促进创新要素有序流动和优化配置...</p>
+                            <button class="btn" onclick="expandQuote('2024')">查看全文</button>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>数字经济发展重要论述</h4>
+                            <p>要推动数字技术与各产业深度融合，促进传统产业数字化转型，发展新业态新模式...</p>
+                            <button class="btn" onclick="expandQuote('digital-economy')">查看全文</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心数据展示 -->
+            <div class="home-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">📈</div>
+                    <h3>数字贸易规模</h3>
+                    <div class="data-number">2.1万亿</div>
+                    <div class="data-label">2024年全国数字贸易规模（人民币）</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🏢</div>
+                    <h3>参展企业</h3>
+                    <div class="data-number">500+</div>
+                    <div class="data-label">第三届数贸会参展企业数量</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🌍</div>
+                    <h3>国际合作</h3>
+                    <div class="data-number">60+</div>
+                    <div class="data-label">参与国家和地区数量</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🚀</div>
+                    <h3>创新成果</h3>
+                    <div class="data-number">100+</div>
+                    <div class="data-label">首发首秀创新产品数量</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 总书记语录模块 -->
+    <div id="secretary-quotes" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">总书记语录</h2>
+            <div class="subsection">
+                <h3>重要讲话精神</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>2024年全球数字贸易博览会贺信</h4>
+                            <p>习近平主席在贺信中指出，数字贸易是推动经济全球化的重要力量，要加强数字贸易国际合作，促进创新要素有序流动和优化配置...</p>
+                            <button class="btn" onclick="expandQuote('2024')">查看全文</button>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>2023年数字经济发展重要指示</h4>
+                            <p>要推动数字经济和实体经济深度融合，发展数字贸易，促进数字技术与各产业深度融合...</p>
+                            <button class="btn" onclick="expandQuote('2023')">查看全文</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数字贸易模块 -->
+    <div id="digital-trade" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">数字贸易</h2>
+            
+            <div class="subsection">
+                <h3>概念定义</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>数字交付贸易</h4>
+                        <p>通过数字化方式交付的服务贸易，包括软件、数字内容等</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>数字订购贸易</h4>
+                        <p>通过数字平台订购的货物和服务贸易</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>数字化产品贸易</h4>
+                        <p>数字技术赋能的传统产品贸易</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>分类趋势</h3>
+                <div class="data-card">
+                    <div class="data-number">35.2%</div>
+                    <div class="data-label">2024年数字贸易增长率</div>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>人工智能</h4>
+                        <p>AI技术服务出口快速增长，成为数字贸易新亮点</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>云计算服务</h4>
+                        <p>企业级云服务出口规模持续扩大</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>数字文娱</h4>
+                        <p>游戏、视频等数字内容出口蓬勃发展</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>杭州现状</h3>
+                <div class="data-card">
+                    <div class="data-number">1580亿</div>
+                    <div class="data-label">2024年杭州数字贸易规模（人民币）</div>
+                </div>
+                <p>杭州作为数字经济第一城，数字贸易发展迅速，形成了以电商、软件服务、数字内容为主导的产业格局。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数贸会模块 -->
+    <div id="trade-expo" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">全球数字贸易博览会</h2>
+            
+            <div class="subsection">
+                <h3>总书记贺信</h3>
+                <p>习近平主席致第三届全球数字贸易博览会贺信，强调要深化数字贸易国际合作，推动构建开放、公平、公正、非歧视的数字贸易环境。</p>
+                <button class="btn">查看贺信全文</button>
+            </div>
+
+            <div class="subsection">
+                <h3>历届回顾</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>第一届（2022）</h4>
+                        <p>首届博览会成功举办，参展企业300+，成交额超过100亿元</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>第二届（2023）</h4>
+                        <p>规模进一步扩大，参展企业400+，成交额达到150亿元</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>第三届（2024）</h4>
+                        <p>最新一届，参展企业500+，创新成果丰富</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>核心活动</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>数贸之夜</h4>
+                        <p>展示数字贸易发展成就的盛大晚会</p>
+                        <button class="btn">查看回放</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>非洲日</h4>
+                        <p>中非数字贸易合作专题活动</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>短视频大赛</h4>
+                        <p>全球数字贸易主题短视频创作大赛</p>
+                        <button class="btn">参与报名</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数贸在线完整内容 -->
+            <div class="subsection">
+                <h3>🌐 数贸在线</h3>
+                <p>全方位数字化服务，让您足不出户体验数贸会精彩</p>
+                
+                <!-- 数贸在线导航 -->
+                <div style="margin-bottom: 30px; text-align: center; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+                        <button class="online-nav-btn active" onclick="showOnlineSection('registration')" style="background: #2a5298; color: white; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">📝 展会注册</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('news')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">📢 大会动态</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('exhibitors')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🏆 展商榜单</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('stats')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">📊 参展统计</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('virtual')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🏪 数字展位</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('activities')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🤝 产业活动</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('matching')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">💼 配对活动</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('ai-recommend')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🤖 商机推荐</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('experience')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🎮 数字体验</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('benefits')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🎁 数字权益</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('cross-border')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">🛒 跨境开店</button>
+                        <button class="online-nav-btn" onclick="showOnlineSection('results')" style="background: #e9ecef; color: #333; border: none; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 14px;">📈 成果统计</button>
+                    </div>
+                </div>
+
+                <!-- 展会注册 -->
+                <div id="online-registration" class="online-section active">
+                    <h4>📝 展会注册</h4>
+                    <p>提供数贸会及相关活动的在线报名入口和信息登记</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h5>🎯 客商注册</h5>
+                            <p>全球数字贸易博览会专业客商参会注册</p>
+                            <div class="form-group">
+                                <input type="text" placeholder="公司/机构名称" style="width: 100%; margin-bottom: 10px;">
+                                <input type="text" placeholder="参会人员姓名" style="width: 100%; margin-bottom: 10px;">
+                                <input type="email" placeholder="邮箱地址" style="width: 100%; margin-bottom: 10px;">
+                                <input type="tel" placeholder="联系电话" style="width: 100%;">
+                            </div>
+                            <button class="btn">立即注册</button>
+                        </div>
+                        <div class="feature-card">
+                            <h5>🌐 展商报名</h5>
+                            <p>展商和主题活动报名</p>
+                            <div class="form-group">
+                                <select style="width: 100%; margin-bottom: 10px;">
+                                    <option>选择展馆</option>
+                                    <option>数字文娱展区</option>
+                                    <option>丝路电商展区</option>
+                                    <option>智慧物流展区</option>
+                                    <option>人工智能展区</option>
+                                </select>
+                                <input type="text" placeholder="参会人数" style="width: 100%;">
+                            </div>
+                            <button class="btn">确认报名</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大会动态 -->
+                <div id="online-news" class="online-section" style="display: none;">
+                    <h4>📢 大会动态</h4>
+                    <p>数贸会相关的大会公告、动态、嘉宾访谈信息展示</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h5>🎯 最新公告</h5>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker" style="background: #dc3545;"></div>
+                                    <div class="timeline-content">
+                                        <h6>第四届全球数字贸易博览会开幕倒计时</h6>
+                                        <p>距离第四届数贸会开幕还有30天，各项筹备工作进展顺利</p>
+                                        <small>2024-12-15 14:30</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 其他在线子模块... -->
+                <div id="online-exhibitors" class="online-section" style="display: none;">
+                    <h4>🏆 展商榜单</h4>
+                    <p>展示福布斯500强、赛迪百强等知名企业参展情况</p>
+                    <div class="data-card">
+                        <div class="data-number">85家</div>
+                        <div class="data-label">福布斯500强企业参展</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>现场新体验</h3>
+                <p>AR/VR 体验、智能导览、互动装置介绍。</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>VR虚拟展厅</h4>
+                        <p>沉浸式虚拟现实展览体验</p>
+                        <button class="btn">体验预约</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>AR智能导览</h4>
+                        <p>增强现实技术指引参观路线</p>
+                        <button class="btn">扫码体验</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 国际资讯与动态模块 -->
+    <div id="international-news" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">国际资讯与动态</h2>
+            
+            <div class="subsection">
+                <h3>最新动态</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>全球数字贸易规则制定加速</h4>
+                        <p>WTO等国际组织正在加快推进数字贸易规则谈判...</p>
+                        <small>2024-12-15</small>
+                    </div>
+                    <div class="feature-card">
+                        <h4>DEPA协定最新进展</h4>
+                        <p>《数字经济伙伴关系协定》成员国扩容，影响力持续扩大...</p>
+                        <small>2024-12-10</small>
+                    </div>
+                    <div class="feature-card">
+                        <h4>中欧数字贸易合作新突破</h4>
+                        <p>中欧在数字贸易领域达成多项合作共识...</p>
+                        <small>2024-12-08</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>行业报告</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>2024全球数字贸易发展报告</h4>
+                        <p>深度分析全球数字贸易发展现状和趋势</p>
+                        <button class="btn">下载报告</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>亚太地区数字贸易白皮书</h4>
+                        <p>聚焦亚太地区数字贸易政策和实践</p>
+                        <button class="btn">下载报告</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 一会三区六基地 -->
+    <div id="one-three-six" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">一会三区六基地</h2>
+            
+            <!-- 一会：博览会常设展区 -->
+            <div class="subsection">
+                <h3>一会：全球数字贸易博览会常设展区</h3>
+                <div class="feature-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 30px;">
+                    <h4>🏛️ 永久落户杭州</h4>
+                    <p>全球数字贸易博览会永久落户杭州，打造具有国际影响力的数字贸易展示交流平台。展区总面积10万平方米，设置主题展区、企业展区、创新展区等多个功能区域。</p>
+                </div>
+                
+                <div class="feature-grid" style="margin-top: 20px;">
+                    <div class="feature-card">
+                        <h4>📍 交通导览图</h4>
+                        <p>杭州国际博览中心及周边区域交通指引</p>
+                        <button class="btn" onclick="showMap()">查看导览图</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 展区特色</h4>
+                        <p>数字贸易全产业链展示，5G、AI、区块链等前沿技术应用</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💼 产业带动</h4>
+                        <p>年度直接带动产业投资超过100亿元</p>
+                        <button class="btn">查看数据</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 三区 -->
+            <div class="subsection">
+                <h3>三区：数字贸易核心发展区域</h3>
+                <div class="feature-grid">
+                    <div class="feature-card" style="border-left: 4px solid #ff6b6b;">
+                        <h4>🏢 滨江区：中国数谷</h4>
+                        <p><strong>核心产业：</strong>数字金融、数据服务、物联网</p>
+                        <p><strong>特色平台：</strong>物联网小镇、互联网小镇</p>
+                        <p><strong>发展成果：</strong>集聚数字企业2000+家，年产值超3000亿元</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid #4ecdc4;">
+                        <h4>👁️ 萧山区：中国视谷</h4>
+                        <p><strong>核心产业：</strong>视觉智能、数字物流、音乐影视</p>
+                        <p><strong>产业集聚：</strong>海康威视、大华股份等龙头企业</p>
+                        <p><strong>平台资源：</strong>视觉智能开放平台、数字物流网络</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid #45b7d1;">
+                        <h4>🏥 钱塘区：中国医药港</h4>
+                        <p><strong>核心产业：</strong>跨境电商、保税+、生物医药数字产业</p>
+                        <p><strong>功能定位：</strong>数字医疗、智慧制药、医药电商</p>
+                        <p><strong>发展优势：</strong>保税区政策叠加，医药贸易便利化</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 六基地 -->
+            <div class="subsection">
+                <h3>六基地：数字贸易产业生态支撑</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎨 艺创小镇（数字文创）</h4>
+                        <p>以数字文化内容创作为核心，聚焦游戏、动画、IP开发等数字文创产业</p>
+                        <div class="data-card" style="margin-top: 15px; padding: 15px;">
+                            <span class="data-number" style="font-size: 24px;">200+</span>
+                            <span class="data-label">文创企业</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏢 阿里总部基地</h4>
+                        <p>阿里巴巴数字贸易总部，发挥龙头带动作用，构建数字贸易生态圈</p>
+                        <div class="data-card" style="margin-top: 15px; padding: 15px;">
+                            <span class="data-number" style="font-size: 24px;">5000亿+</span>
+                            <span class="data-label">年交易规模</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎬 数字影视基地</h4>
+                        <p>临平区数字影视内容创制和分发平台，提升数贸港文化输出能力</p>
+                        <div class="data-card" style="margin-top: 15px; padding: 15px;">
+                            <span class="data-number" style="font-size: 24px;">100+</span>
+                            <span class="data-label">影视企业</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📚 数字文化基地</h4>
+                        <p>良渚区域数字出版、网文网游产业集聚，打造数字文化新高地</p>
+                        <div class="data-card" style="margin-top: 15px; padding: 15px;">
+                            <span class="data-number" style="font-size: 24px;">50亿+</span>
+                            <span class="data-label">年产值</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👗 数字时尚基地</h4>
+                        <p>上城区数字服饰、设计电商，融合新消费的数字时尚新地标</p>
+                        <div class="data-card" style="margin-top: 15px; padding: 15px;">
+                            <span class="data-number" style="font-size: 24px;">300+</span>
+                            <span class="data-label">时尚品牌</span>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎮 数字电竞基地</h4>
+                        <p>拱墅区电竞赛事平台与配套企业集聚，打造电竞产业生态</p>
+                        <div class="data-card" style="margin-top: 15px; padding: 15px;">
+                            <span class="data-number" style="font-size: 24px;">80+</span>
+                            <span class="data-label">电竞企业</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 空间布局图 -->
+            <div class="subsection">
+                <h3>🗺️ 空间布局图</h3>
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🗺️</div>
+                    <h4>一会三区六基地整体布局</h4>
+                    <p>点击各功能区查看详细介绍与招商信息</p>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                        <button class="btn" onclick="showAreaInfo('expo')">博览会常设展区</button>
+                        <button class="btn" onclick="showAreaInfo('binjiang')">滨江区</button>
+                        <button class="btn" onclick="showAreaInfo('xiaoshan')">萧山区</button>
+                        <button class="btn" onclick="showAreaInfo('qiantang')">钱塘区</button>
+                        <button class="btn" onclick="showAreaInfo('yichuang')">艺创小镇</button>
+                        <button class="btn" onclick="showAreaInfo('ali')">阿里基地</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="action-plan" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">三年行动计划（2024-2026）</h2>
+            
+            <!-- 目标展望 -->
+            <div class="subsection">
+                <h3>📋 目标展望</h3>
+                <div class="data-card">
+                    <h4>2024-2026年行动计划总体目标</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                        <div>
+                            <div class="data-number">5000亿</div>
+                            <div class="data-label">数字贸易规模目标</div>
+                        </div>
+                        <div>
+                            <div class="data-number">1000家</div>
+                            <div class="data-label">数字贸易企业</div>
+                        </div>
+                        <div>
+                            <div class="data-number">10个</div>
+                            <div class="data-label">国际合作平台</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card" style="margin-top: 20px;">
+                    <h4>空间布局规划</h4>
+                    <p>构建"一核多点、协同发展"的数字贸易发展格局，以杭州为核心，辐射长三角，面向全球市场。</p>
+                </div>
+            </div>
+
+            <!-- 重点任务 -->
+            <div class="subsection">
+                <h3>🎯 重点任务</h3>
+                
+                <!-- 数字出海 -->
+                <div class="feature-card" style="border-left: 4px solid #ff6b6b;">
+                    <h4>🚢 数字出海</h4>
+                    <div class="feature-grid">
+                        <div>
+                            <h5>平台拓展</h5>
+                            <p>支持企业利用数字平台开拓海外市场，建设国际化数字服务平台</p>
+                        </div>
+                        <div>
+                            <h5>服务推广</h5>
+                            <p>推广云计算、大数据、人工智能等数字服务出口</p>
+                        </div>
+                        <div>
+                            <h5>品牌建设</h5>
+                            <p>打造"杭州制造"数字服务品牌，提升国际竞争力</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 跨境电商 -->
+                <div class="feature-card" style="border-left: 4px solid #4ecdc4;">
+                    <h4>🛒 跨境电商/支付/平台建设</h4>
+                    <div class="feature-grid">
+                        <div>
+                            <h5>全链条发展</h5>
+                            <p>完善跨境电商产业链，从商品采购到物流配送全流程优化</p>
+                        </div>
+                        <div>
+                            <h5>综合服务平台</h5>
+                            <p>建设跨境电商综合服务平台，提供一站式服务</p>
+                        </div>
+                        <div>
+                            <h5>独立站建设</h5>
+                            <p>支持企业建设品牌独立站，提升品牌价值和盈利能力</p>
+                        </div>
+                        <div>
+                            <h5>支付体系</h5>
+                            <p>完善跨境支付体系，降低交易成本和风险</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数字化产业升级 -->
+                <div class="feature-card" style="border-left: 4px solid #45b7d1;">
+                    <h4>⚡ 数字化产业升级</h4>
+                    <div class="feature-grid">
+                        <div>
+                            <h5>传统贸易转型</h5>
+                            <p>推动传统贸易企业数字化转型，提升贸易效率</p>
+                        </div>
+                        <div>
+                            <h5>制造业赋能</h5>
+                            <p>以数字化赋能制造业转型升级，发展智能制造</p>
+                        </div>
+                        <div>
+                            <h5>供应链优化</h5>
+                            <p>提升产业链供应链数字化水平，构建韧性供应链</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 进度追踪 -->
+            <div class="subsection">
+                <h3>📊 进度追踪</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #28a745;"></div>
+                        <div class="timeline-content">
+                            <h4>2024年第一季度 ✅</h4>
+                            <p>完成跨境电商综合服务平台建设，启动数字出海企业培育计划</p>
+                            <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                                <strong>完成度：95%</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #ffc107;"></div>
+                        <div class="timeline-content">
+                            <h4>2024年第二季度 🔄</h4>
+                            <p>推进数字化产业升级项目，建设智能制造示范工厂</p>
+                            <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                                <strong>完成度：68%</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="background: #6c757d;"></div>
+                        <div class="timeline-content">
+                            <h4>2024年第三季度 ⏳</h4>
+                            <p>启动国际合作平台建设，扩大数字服务出口规模</p>
+                            <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                                <strong>计划中</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn">查看详细进度报告</button>
+            </div>
+
+            <!-- 成果展示 -->
+            <div class="subsection">
+                <h3>🏆 成果展示</h3>
+                <div class="home-highlights">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">📈</div>
+                        <h3>贸易规模增长</h3>
+                        <div class="data-number">45%</div>
+                        <div class="data-label">2024年数字贸易增长率</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🏢</div>
+                        <h3>企业数字化</h3>
+                        <div class="data-number">800家</div>
+                        <div class="data-label">完成数字化转型企业</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🌍</div>
+                        <h3>出海成效</h3>
+                        <div class="data-number">60%</div>
+                        <div class="data-label">数字服务出口增长</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">⚡</div>
+                        <h3>平台建设</h3>
+                        <div class="data-number">15个</div>
+                        <div class="data-label">数字贸易服务平台</div>
+                    </div>
+                </div>
+                <button class="btn" style="margin-top: 20px;">下载年度成果报告</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="policies" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">政策条例</h2>
+            
+            <!-- 国家政策 -->
+            <div class="subsection">
+                <h3>📜 国家政策</h3>
+                <p>汇总国家层面数字贸易相关政策法规与通知文件</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>《数字贸易发展规划》</h4>
+                        <p>商务部等部门联合发布，明确数字贸易发展目标和路径</p>
+                        <small>发布时间：2024年3月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>《关于推进数字贸易高质量发展的指导意见》</h4>
+                        <p>国务院办公厅发布，部署数字贸易发展重点任务</p>
+                        <small>发布时间：2023年12月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>《跨境电商零售进口商品清单》</h4>
+                        <p>财政部、商务部等发布，优化跨境电商政策环境</p>
+                        <small>发布时间：2024年1月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>《数字经济促进条例》</h4>
+                        <p>为数字贸易发展提供法律保障和制度支撑</p>
+                        <small>发布时间：2023年8月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <input type="text" placeholder="搜索政策文件..." style="width: 300px; padding: 10px; border: 1px solid #ddd; border-radius: 25px;">
+                    <button class="btn" style="margin-left: 10px;">🔍 搜索</button>
+                </div>
+            </div>
+
+            <!-- 地方条例 -->
+            <div class="subsection">
+                <h3>🏛️ 地方条例</h3>
+                <p>杭州、浙江等地出台的数字贸易促进条例等地方政策</p>
+                
+                <div style="margin-bottom: 20px;">
+                    <label>选择地区：</label>
+                    <select style="padding: 8px; border: 1px solid #ddd; border-radius: 5px;" onchange="filterPolicies(this.value)">
+                        <option value="all">全部地区</option>
+                        <option value="zhejiang">浙江省</option>
+                        <option value="hangzhou">杭州市</option>
+                        <option value="binjiang">滨江区</option>
+                        <option value="xiaoshan">萧山区</option>
+                    </select>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card" data-region="zhejiang">
+                        <h4>《浙江省数字贸易发展条例》</h4>
+                        <p>浙江省人大常委会审议通过，为数字贸易发展提供法治保障</p>
+                        <small>地区：浙江省 | 发布时间：2024年5月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                    <div class="feature-card" data-region="hangzhou">
+                        <h4>《杭州市数字贸易促进办法》</h4>
+                        <p>杭州市政府制定，明确数字贸易发展支持措施</p>
+                        <small>地区：杭州市 | 发布时间：2024年2月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                    <div class="feature-card" data-region="hangzhou">
+                        <h4>《杭州市跨境电商发展扶持政策》</h4>
+                        <p>针对跨境电商企业的专项扶持政策</p>
+                        <small>地区：杭州市 | 发布时间：2023年11月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                    <div class="feature-card" data-region="binjiang">
+                        <h4>《滨江区数字经济发展若干政策》</h4>
+                        <p>滨江区出台的数字经济产业扶持政策</p>
+                        <small>地区：滨江区 | 发布时间：2024年1月</small>
+                        <br>
+                        <button class="btn" style="margin-top: 10px;">下载全文</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 政策解读 -->
+            <div class="subsection">
+                <h3>💡 政策解读</h3>
+                <p>解读相关政策要点和扶持措施，帮助企业理解落实路径</p>
+                <div class="feature-grid">
+                    <div class="feature-card" style="border-left: 4px solid #28a745;">
+                        <h4>数字贸易税收优惠政策解读</h4>
+                        <p>详解数字贸易企业可享受的税收优惠政策，包括研发费用加计扣除、高新技术企业认定等</p>
+                        <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                            <strong>核心优惠：</strong>研发费用200%扣除，企业所得税减按15%征收
+                        </div>
+                        <button class="btn" style="margin-top: 10px;">查看详解</button>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid #007bff;">
+                        <h4>跨境电商综试区政策解读</h4>
+                        <p>解读跨境电商综合试验区的创新政策，包括税收政策、监管模式等</p>
+                        <div style="background: #d1ecf1; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                            <strong>核心优势：</strong>简化申报流程，降低通关成本30%以上
+                        </div>
+                        <button class="btn" style="margin-top: 10px;">查看详解</button>
+                    </div>
+                    <div class="feature-card" style="border-left: 4px solid #ffc107;">
+                        <h4>数字服务出口支持政策</h4>
+                        <p>解读支持数字服务出口的各项政策措施和申报条件</p>
+                        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                            <strong>支持力度：</strong>最高可获得200万元资金支持
+                        </div>
+                        <button class="btn" style="margin-top: 10px;">查看详解</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 办理指南 -->
+            <div class="subsection">
+                <h3>📋 办理指南</h3>
+                <p>提供政策申办指南和相关服务入口</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>💼 高新技术企业认定</h4>
+                        <p>申请条件、所需材料、办理流程一站式指南</p>
+                        <div class="form-group">
+                            <small>办理时限：45个工作日</small><br>
+                            <small>申请费用：免费</small>
+                        </div>
+                        <button class="btn">开始申请</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛒 跨境电商备案</h4>
+                        <p>跨境电商企业备案申请流程和注意事项</p>
+                        <div class="form-group">
+                            <small>办理时限：5个工作日</small><br>
+                            <small>申请费用：免费</small>
+                        </div>
+                        <button class="btn">开始申请</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💰 财政扶持申请</h4>
+                        <p>数字贸易相关财政扶持资金申请指南</p>
+                        <div class="form-group">
+                            <small>申请周期：每年2次</small><br>
+                            <small>扶持额度：10-200万元</small>
+                        </div>
+                        <button class="btn">开始申请</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 统计报表填报</h4>
+                        <p>数字贸易统计报表在线填报系统</p>
+                        <div class="form-group">
+                            <small>填报周期：月度/季度</small><br>
+                            <small>填报方式：在线系统</small>
+                        </div>
+                        <button class="btn">进入系统</button>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h4>📞 政策咨询热线</h4>
+                    <p>如有政策疑问，欢迎拨打咨询热线：<strong>0571-12345</strong></p>
+                    <p>服务时间：工作日 9:00-17:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="investment" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">数贸招商</h2>
+            
+            <!-- 招商动态 -->
+            <div class="subsection">
+                <h3>📰 招商动态</h3>
+                <p>数贸相关产业园区招商活动、投资政策和市场动向</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎯 2024数字贸易投资推介会</h4>
+                        <p>12月20日，杭州国际博览中心，重点推介数字服务、跨境电商等领域投资机会</p>
+                        <small>📅 2024-12-15 发布</small>
+                        <button class="btn" style="margin-top: 10px;">了解详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💼 滨江数字金融产业园招商</h4>
+                        <p>面向全球招引数字金融龙头企业，提供最优政策和服务保障</p>
+                        <small>📅 2024-12-10 发布</small>
+                        <button class="btn" style="margin-top: 10px;">了解详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌐 萧山视觉智能产业招商</h4>
+                        <p>围绕"中国视谷"建设，重点招引AI视觉、智能制造等项目</p>
+                        <small>📅 2024-12-08 发布</small>
+                        <button class="btn" style="margin-top: 10px;">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 招商项目 -->
+            <div class="subsection">
+                <h3>🎯 招商项目</h3>
+                
+                <!-- 产业招商目录 -->
+                <div style="margin-bottom: 30px;">
+                    <h4>📂 产业招商目录</h4>
+                    <p>展示重点招商的数字贸易细分领域</p>
+                    <div class="feature-grid">
+                        <div class="feature-card" style="border-left: 4px solid #ff6b6b;">
+                            <h4>🤖 人工智能</h4>
+                            <p>机器学习、深度学习、计算机视觉、自然语言处理</p>
+                            <div class="data-card" style="margin-top: 10px; padding: 10px;">
+                                <span>重点项目：20个</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" style="border-left: 4px solid #4ecdc4;">
+                            <h4>☁️ 云计算服务</h4>
+                            <p>云基础设施、SaaS平台、大数据分析服务</p>
+                            <div class="data-card" style="margin-top: 10px; padding: 10px;">
+                                <span>重点项目：15个</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" style="border-left: 4px solid #45b7d1;">
+                            <h4>🛒 跨境电商</h4>
+                            <p>跨境电商平台、供应链服务、支付解决方案</p>
+                            <div class="data-card" style="margin-top: 10px; padding: 10px;">
+                                <span>重点项目：25个</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" style="border-left: 4px solid #ffc107;">
+                            <h4>🎮 数字文创</h4>
+                            <p>游戏开发、数字影视、虚拟现实、数字艺术</p>
+                            <div class="data-card" style="margin-top: 10px; padding: 10px;">
+                                <span>重点项目：18个</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" style="border-left: 4px solid #28a745;">
+                            <h4>🏥 数字医疗</h4>
+                            <p>远程医疗、医疗AI、数字化诊断设备</p>
+                            <div class="data-card" style="margin-top: 10px; padding: 10px;">
+                                <span>重点项目：12个</span>
+                            </div>
+                        </div>
+                        <div class="feature-card" style="border-left: 4px solid #6f42c1;">
+                            <h4>🔒 网络安全</h4>
+                            <p>数据安全、隐私保护、网络防护技术</p>
+                            <div class="data-card" style="margin-top: 10px; padding: 10px;">
+                                <span>重点项目：10个</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 具体招商项目 -->
+                <div>
+                    <h4>🎯 重点招商项目</h4>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>💎 数字贸易总部基地项目</h4>
+                            <p><strong>投资规模：</strong>50亿元</p>
+                            <p><strong>建设内容：</strong>数字贸易企业总部、研发中心、展示中心</p>
+                            <p><strong>优惠政策：</strong>土地价格优惠30%，税收优惠5年</p>
+                            <button class="btn">查看详情</button>
+                            <button class="btn" style="margin-left: 10px; background: #28a745;">⭐ 收藏</button>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🌟 跨境电商产业园项目</h4>
+                            <p><strong>投资规模：</strong>30亿元</p>
+                            <p><strong>建设内容：</strong>跨境电商平台、仓储物流、金融服务</p>
+                            <p><strong>优惠政策：</strong>前3年免租金，提供启动资金支持</p>
+                            <button class="btn">查看详情</button>
+                            <button class="btn" style="margin-left: 10px; background: #28a745;">⭐ 收藏</button>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🚀 AI视觉产业化项目</h4>
+                            <p><strong>投资规模：</strong>20亿元</p>
+                            <p><strong>建设内容：</strong>AI视觉算法研发、产业化应用平台</p>
+                            <p><strong>优惠政策：</strong>研发投入补贴50%，人才引进奖励</p>
+                            <button class="btn">查看详情</button>
+                            <button class="btn" style="margin-left: 10px; background: #28a745;">⭐ 收藏</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 投资环境 -->
+            <div class="subsection">
+                <h3>🌟 投资环境介绍</h3>
+                <p>杭州在数字贸易发展方面的独特优势</p>
+                <div class="data-card">
+                    <h4>🏆 杭州数字贸易投资优势</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;">
+                        <div>
+                            <h5>🎯 政策优势</h5>
+                            <p>国家级数字贸易示范区，享受先行先试政策</p>
+                        </div>
+                        <div>
+                            <h5>💼 产业优势</h5>
+                            <p>完整的数字经济产业链，龙头企业集聚</p>
+                        </div>
+                        <div>
+                            <h5>🌐 区位优势</h5>
+                            <p>长三角核心城市，辐射全国和亚太市场</p>
+                        </div>
+                        <div>
+                            <h5>🎓 人才优势</h5>
+                            <p>高等院校密集，数字人才培养体系完善</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card" style="margin-top: 20px;">
+                    <h4>📖 投资指南下载</h4>
+                    <p>《杭州数字贸易投资指南2024》详细介绍投资环境、政策支持、办事流程等</p>
+                    <button class="btn">下载投资指南</button>
+                </div>
+            </div>
+
+            <!-- 政策扶持申请 -->
+            <div class="subsection">
+                <h3>💰 政策扶持申请</h3>
+                <p>提供针对投资者的各类优惠政策申请入口</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🏢 总部经济扶持</h4>
+                        <p>企业总部落户奖励，最高3000万元</p>
+                        <button class="btn">立即申请</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔬 研发投入补贴</h4>
+                        <p>研发费用补贴20%-50%</p>
+                        <button class="btn">立即申请</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👥 人才引进奖励</h4>
+                        <p>高层次人才最高500万元奖励</p>
+                        <button class="btn">立即申请</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏭 用地优惠</h4>
+                        <p>工业用地价格优惠20%-40%</p>
+                        <button class="btn">立即申请</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 签约快讯 -->
+            <div class="subsection">
+                <h3>📢 签约快讯</h3>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; height: 200px; overflow-y: auto;">
+                    <div class="scrolling-news">
+                        <div class="news-item" style="padding: 10px; border-bottom: 1px solid #eee;">
+                            <span class="news-time">2024-12-15</span>
+                            <span class="news-content">🎉 阿里云国际总部项目签约落户杭州，投资额100亿元</span>
+                        </div>
+                        <div class="news-item" style="padding: 10px; border-bottom: 1px solid #eee;">
+                            <span class="news-time">2024-12-12</span>
+                            <span class="news-content">🎉 字节跳动跨境电商项目落户萧山，投资额50亿元</span>
+                        </div>
+                        <div class="news-item" style="padding: 10px; border-bottom: 1px solid #eee;">
+                            <span class="news-time">2024-12-10</span>
+                            <span class="news-content">🎉 腾讯数字文创基地签约钱塘区，投资额30亿元</span>
+                        </div>
+                        <div class="news-item" style="padding: 10px; border-bottom: 1px solid #eee;">
+                            <span class="news-time">2024-12-08</span>
+                            <span class="news-content">🎉 华为云计算中心项目落户滨江区，投资额80亿元</span>
+                        </div>
+                        <div class="news-item" style="padding: 10px; border-bottom: 1px solid #eee;">
+                            <span class="news-time">2024-12-05</span>
+                            <span class="news-content">🎉 美团海外业务总部签约杭州，投资额20亿元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成功案例 -->
+            <div class="subsection">
+                <h3>🏆 成功案例</h3>
+                <p>展示落地企业和投资成功案例，增强招商吸引力</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🏢 阿里巴巴集团</h4>
+                        <p><strong>落户时间：</strong>1999年</p>
+                        <p><strong>发展成果：</strong>年营收超8000亿，员工超25万</p>
+                        <p><strong>带动效应：</strong>培育数字经济生态，带动上下游企业1000+家</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛡️ 海康威视</h4>
+                        <p><strong>落户时间：</strong>2001年</p>
+                        <p><strong>发展成果：</strong>全球安防龙头，市值超3000亿</p>
+                        <p><strong>带动效应：</strong>构建视觉智能产业链，集聚相关企业500+家</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💰 蚂蚁集团</h4>
+                        <p><strong>落户时间：</strong>2004年</p>
+                        <p><strong>发展成果：</strong>全球领先金融科技公司，估值超1500亿美元</p>
+                        <p><strong>带动效应：</strong>推动数字金融发展，服务全球20亿用户</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="online-services" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">在线服务</h2>
+            
+            <!-- 项目申报 -->
+            <div class="subsection">
+                <h3>📝 项目申报</h3>
+                <p>支持数字贸易项目在线申报、评审流程与状态查询</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🚀 数字贸易创新项目申报</h4>
+                        <p>支持数字贸易技术创新、模式创新项目申报</p>
+                        <div style="background: #d1ecf1; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                            <strong>申报周期：</strong>每季度一次<br>
+                            <strong>资助额度：</strong>10-500万元
+                        </div>
+                        <button class="btn">开始申报</button>
+                        <button class="btn" style="margin-left: 10px; background: #6c757d;">查看指南</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌍 数字服务出口项目申报</h4>
+                        <p>支持企业数字服务出口业务发展</p>
+                        <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                            <strong>申报周期：</strong>全年受理<br>
+                            <strong>资助额度：</strong>最高200万元
+                        </div>
+                        <button class="btn">开始申报</button>
+                        <button class="btn" style="margin-left: 10px; background: #6c757d;">查看指南</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏭 数字化转型项目申报</h4>
+                        <p>支持传统企业数字化转型升级</p>
+                        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                            <strong>申报周期：</strong>每半年一次<br>
+                            <strong>资助额度：</strong>项目投资30%补贴
+                        </div>
+                        <button class="btn">开始申报</button>
+                        <button class="btn" style="margin-left: 10px; background: #6c757d;">查看指南</button>
+                    </div>
+                </div>
+
+                <!-- 申报流程 -->
+                <div style="margin-top: 30px;">
+                    <h4>📋 申报流程</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker" style="background: #28a745;"></div>
+                            <div class="timeline-content">
+                                <h5>1. 在线申报</h5>
+                                <p>填写申报表单，上传相关材料</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker" style="background: #ffc107;"></div>
+                            <div class="timeline-content">
+                                <h5>2. 初审筛选</h5>
+                                <p>专业团队进行初步审核（5个工作日）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker" style="background: #007bff;"></div>
+                            <div class="timeline-content">
+                                <h5>3. 专家评审</h5>
+                                <p>行业专家评审答辩（10个工作日）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker" style="background: #6f42c1;"></div>
+                            <div class="timeline-content">
+                                <h5>4. 结果公示</h5>
+                                <p>评审结果公示，签署协议（5个工作日）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 状态查询 -->
+                <div style="margin-top: 30px; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <h4>🔍 申报状态查询</h4>
+                    <div class="form-group">
+                        <label>申报编号：</label>
+                        <input type="text" placeholder="请输入申报编号" style="width: 200px;">
+                        <button class="btn" style="margin-left: 10px;">查询状态</button>
+                    </div>
+                    <p><small>💡 申报成功后，系统将自动生成申报编号并发送至您的邮箱</small></p>
+                </div>
+            </div>
+
+            <!-- 信息查询 -->
+            <div class="subsection">
+                <h3>🔍 信息查询</h3>
+                <p>提供政策文件、统计数据和行业信息的一站式查询服务</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📄 政策文件查询</h4>
+                        <p>搜索查询各类数字贸易相关政策文件</p>
+                        <div class="form-group">
+                            <input type="text" placeholder="输入关键词搜索政策..." style="width: 100%;">
+                        </div>
+                        <button class="btn">搜索政策</button>
+                        <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                            <span>热门搜索：</span>
+                            <a href="#" style="color: #007bff; margin-right: 10px;">跨境电商</a>
+                            <a href="#" style="color: #007bff; margin-right: 10px;">数字服务</a>
+                            <a href="#" style="color: #007bff;">税收优惠</a>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 统计数据查询</h4>
+                        <p>查询数字贸易相关统计数据和分析报告</p>
+                        <div class="form-group">
+                            <select style="width: 100%;">
+                                <option>选择数据类型</option>
+                                <option>进出口数据</option>
+                                <option>企业统计</option>
+                                <option>产业分析</option>
+                                <option>区域对比</option>
+                            </select>
+                        </div>
+                        <button class="btn">查询数据</button>
+                        <div style="margin-top: 10px;">
+                            <small>📈 最新更新：2024年11月数据</small>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏢 企业信息查询</h4>
+                        <p>查询数字贸易企业基本信息和经营状况</p>
+                        <div class="form-group">
+                            <input type="text" placeholder="输入企业名称或统一社会信用代码..." style="width: 100%;">
+                        </div>
+                        <button class="btn">查询企业</button>
+                        <div style="margin-top: 10px;">
+                            <small>🔒 信息查询需要登录验证</small>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h4">🌍 行业资讯查询</h4>
+                        <p>获取最新的数字贸易行业动态和资讯</p>
+                        <div class="form-group">
+                            <select style="width: 100%;">
+                                <option>选择行业领域</option>
+                                <option>跨境电商</option>
+                                <option>数字服务</option>
+                                <option>数字金融</option>
+                                <option>数字文创</option>
+                            </select>
+                        </div>
+                        <button class="btn">查看资讯</button>
+                        <div style="margin-top: 10px;">
+                            <small>📱 支持RSS订阅推送</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI智能体 -->
+            <div class="subsection">
+                <h3>🤖 AI智能体</h3>
+                <p>接入数贸会AI智能体，通过互动进行意见征集和需求推荐，实现双向互动交流</p>
+                
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🤖</div>
+                        <h4>数贸小助手</h4>
+                        <p>7×24小时在线，为您提供专业的数字贸易咨询服务</p>
+                    </div>
+                    
+                    <!-- 模拟聊天界面 -->
+                    <div style="background: white; color: #333; border-radius: 10px; padding: 20px; margin-bottom: 20px; height: 300px; overflow-y: auto;" id="chatContainer">
+                        <div style="display: flex; margin-bottom: 15px;">
+                            <div style="background: #e9ecef; padding: 10px; border-radius: 10px; max-width: 70%;">
+                                <strong>数贸小助手：</strong>您好！我是数贸小助手，可以为您提供政策咨询、项目申报指导、数据查询等服务。请问有什么可以帮助您的吗？
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 输入框 -->
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="chatInput" placeholder="输入您的问题..." style="flex: 1; padding: 12px; border: none; border-radius: 25px; color: #333;">
+                        <button class="btn" style="background: white; color: #667eea;" onclick="sendMessage()">发送</button>
+                    </div>
+                    
+                    <!-- 快捷问题 -->
+                    <div style="margin-top: 15px;">
+                        <small>💡 常见问题：</small><br>
+                        <button onclick="askQuestion('如何申报数字贸易项目？')" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 5px 10px; border-radius: 15px; margin: 5px; cursor: pointer;">如何申报数字贸易项目？</button>
+                        <button onclick="askQuestion('跨境电商有哪些优惠政策？')" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 5px 10px; border-radius: 15px; margin: 5px; cursor: pointer;">跨境电商有哪些优惠政策？</button>
+                        <button onclick="askQuestion('数字服务出口流程是什么？')" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: 5px 10px; border-radius: 15px; margin: 5px; cursor: pointer;">数字服务出口流程是什么？</button>
+                    </div>
+                </div>
+
+                <!-- AI功能介绍 -->
+                <div class="feature-grid" style="margin-top: 30px;">
+                    <div class="feature-card">
+                        <h4>💬 智能问答</h4>
+                        <p>基于知识库的智能问答，快速获取政策解读和办事指南</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📋 需求推荐</h4>
+                        <p>根据企业情况智能推荐适合的政策和项目申报机会</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 意见征集</h4>
+                        <p>收集用户反馈和建议，持续优化服务质量</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 数据分析</h4>
+                        <p>提供个性化的数据分析和行业趋势预测</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他在线服务 -->
+            <div class="subsection">
+                <h3>🛎️ 其他服务</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>💬 在线客服</h4>
+                        <p>人工客服在线解答，工作日9:00-17:00</p>
+                        <button class="btn">开始对话</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 意见反馈</h4>
+                        <p>欢迎您提出宝贵意见和建议</p>
+                        <button class="btn">提交反馈</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📥 资料下载</h4>
+                        <p>下载各类宣传资料和政策文件</p>
+                        <button class="btn">进入下载</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📅 预约服务</h4>
+                        <p>预约线下咨询和项目对接服务</p>
+                        <button class="btn">立即预约</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tech-overseas" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">科技出海产品</h2>
+            
+            <!-- 镇店之宝 -->
+            <div class="subsection">
+                <h3>💎 镇店之宝</h3>
+                <p>重点展示科技出海领域的代表性"镇店之宝"产品和技术成果</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: #ffd700; color: #333; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">💎 镇店之宝</div>
+                        <h4>🤖 阿里云ET大脑</h4>
+                        <p><strong>技术领域：</strong>人工智能、云计算</p>
+                        <p><strong>出海成果：</strong>服务全球200+国家和地区</p>
+                        <p><strong>核心优势：</strong>全球领先的AI能力，多语言支持</p>
+                        <div class="data-card" style="margin-top: 15px; background: rgba(255,255,255,0.2);">
+                            <span class="data-number" style="font-size: 24px;">10亿+</span>
+                            <span class="data-label">全球用户数</span>
+                        </div>
+                        <button class="btn" style="background: white; color: #ff6b6b; margin-top: 10px;">查看详情</button>
+                    </div>
+                    
+                    <div class="feature-card" style="background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: #ffd700; color: #333; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">💎 镇店之宝</div>
+                        <h4>👁️ 海康威视AI视觉</h4>
+                        <p><strong>技术领域：</strong>计算机视觉、AI算法</p>
+                        <p><strong>出海成果：</strong>产品销往150+国家</p>
+                        <p><strong>核心优势：</strong>全球安防市场占有率第一</p>
+                        <div class="data-card" style="margin-top: 15px; background: rgba(255,255,255,0.2);">
+                            <span class="data-number" style="font-size: 24px;">60%</span>
+                            <span class="data-label">全球市场份额</span>
+                        </div>
+                        <button class="btn" style="background: white; color: #4ecdc4; margin-top: 10px;">查看详情</button>
+                    </div>
+                    
+                    <div class="feature-card" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: #ffd700; color: #333; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">💎 镇店之宝</div>
+                        <h4>💰 蚂蚁区块链</h4>
+                        <p><strong>技术领域：</strong>区块链、数字金融</p>
+                        <p><strong>出海成果：</strong>赋能40+国家数字支付</p>
+                        <p><strong>核心优势：</strong>全球最大的区块链专利持有者</p>
+                        <div class="data-card" style="margin-top: 15px; background: rgba(255,255,255,0.2);">
+                            <span class="data-number" style="font-size: 24px;">3000+</span>
+                            <span class="data-label">区块链专利</span>
+                        </div>
+                        <button class="btn" style="background: white; color: #667eea; margin-top: 10px;">查看详情</button>
+                    </div>
+                    
+                    <div class="feature-card" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: #ffd700; color: #333; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">💎 镇店之宝</div>
+                        <h4>🎮 网易游戏引擎</h4>
+                        <p><strong>技术领域：</strong>游戏开发、3D引擎</p>
+                        <p><strong>出海成果：</strong>游戏产品覆盖100+国家</p>
+                        <p><strong>核心优势：</strong>自研引擎技术，全球化运营</p>
+                        <div class="data-card" style="margin-top: 15px; background: rgba(255,255,255,0.2);">
+                            <span class="data-number" style="font-size: 24px;">5亿+</span>
+                            <span class="data-label">海外用户</span>
+                        </div>
+                        <button class="btn" style="background: white; color: #f093fb; margin-top: 10px;">查看详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 产品展示 -->
+            <div class="subsection">
+                <h3>🎯 产品展示</h3>
+                <p>按行业分类展示人工智能、物联网等领域的创新产品</p>
+                
+                <!-- 分类筛选 -->
+                <div style="margin-bottom: 30px; text-align: center;">
+                    <button class="filter-btn active" onclick="filterProducts('all')" style="background: #2a5298; color: white; border: none; padding: 10px 20px; margin: 0 5px; border-radius: 25px; cursor: pointer;">全部产品</button>
+                    <button class="filter-btn" onclick="filterProducts('ai')" style="background: #f8f9fa; color: #333; border: 1px solid #ddd; padding: 10px 20px; margin: 0 5px; border-radius: 25px; cursor: pointer;">人工智能</button>
+                    <button class="filter-btn" onclick="filterProducts('iot')" style="background: #f8f9fa; color: #333; border: 1px solid #ddd; padding: 10px 20px; margin: 0 5px; border-radius: 25px; cursor: pointer;">物联网</button>
+                    <button class="filter-btn" onclick="filterProducts('fintech')" style="background: #f8f9fa; color: #333; border: 1px solid #ddd; padding: 10px 20px; margin: 0 5px; border-radius: 25px; cursor: pointer;">金融科技</button>
+                    <button class="filter-btn" onclick="filterProducts('ecommerce')" style="background: #f8f9fa; color: #333; border: 1px solid #ddd; padding: 10px 20px; margin: 0 5px; border-radius: 25px; cursor: pointer;">电商平台</button>
+                    <button class="filter-btn" onclick="filterProducts('entertainment')" style="background: #f8f9fa; color: #333; border: 1px solid #ddd; padding: 10px 20px; margin: 0 5px; border-radius: 25px; cursor: pointer;">数字娱乐</button>
+                </div>
+
+                <!-- 产品列表 -->
+                <div class="feature-grid" id="productGrid">
+                    <!-- AI产品 -->
+                    <div class="feature-card product-item" data-category="ai">
+                        <h4>🧠 达摩院语音识别</h4>
+                        <p><strong>企业：</strong>阿里巴巴</p>
+                        <p><strong>技术特点：</strong>支持100+语言，准确率99%+</p>
+                        <p><strong>出海情况：</strong>已在东南亚、中东等地区部署</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <div class="feature-card product-item" data-category="ai">
+                        <h4>🤖 旷视Face++</h4>
+                        <p><strong>企业：</strong>旷视科技</p>
+                        <p><strong>技术特点：</strong>全球领先的人脸识别技术</p>
+                        <p><strong>出海情况：</strong>服务60+国家的企业客户</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <!-- 物联网产品 -->
+                    <div class="feature-card product-item" data-category="iot">
+                        <h4>📡 涂鸦智能IoT平台</h4>
+                        <p><strong>企业：</strong>涂鸦智能</p>
+                        <p><strong>技术特点：</strong>全球化IoT开发平台</p>
+                        <p><strong>出海情况：</strong>服务200+国家和地区</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <div class="feature-card product-item" data-category="iot">
+                        <h4>🌐 华为IoT联接管理平台</h4>
+                        <p><strong>企业：</strong>华为技术</p>
+                        <p><strong>技术特点：</strong>端到端IoT解决方案</p>
+                        <p><strong>出海情况：</strong>全球170+国家部署</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <!-- 金融科技产品 -->
+                    <div class="feature-card product-item" data-category="fintech">
+                        <h4>💳 支付宝数字钱包</h4>
+                        <p><strong>企业：</strong>蚂蚁集团</p>
+                        <p><strong>技术特点：</strong>移动支付、数字金融服务</p>
+                        <p><strong>出海情况：</strong>在多个国家推出本地化钱包</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <div class="feature-card product-item" data-category="fintech">
+                        <h4>🏦 腾讯区块链TBaaS</h4>
+                        <p><strong>企业：</strong>腾讯云</p>
+                        <p><strong>技术特点：</strong>企业级区块链服务平台</p>
+                        <p><strong>出海情况：</strong>为海外企业提供区块链解决方案</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <!-- 电商平台产品 -->
+                    <div class="feature-card product-item" data-category="ecommerce">
+                        <h4>🛒 AliExpress全球速卖通</h4>
+                        <p><strong>企业：</strong>阿里巴巴</p>
+                        <p><strong>技术特点：</strong>全球B2C跨境电商平台</p>
+                        <p><strong>出海情况：</strong>覆盖200+国家和地区</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <div class="feature-card product-item" data-category="ecommerce">
+                        <h4>📦 菜鸟智慧物流</h4>
+                        <p><strong>企业：</strong>菜鸟网络</p>
+                        <p><strong>技术特点：</strong>智能物流解决方案</p>
+                        <p><strong>出海情况：</strong>全球物流网络布局</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <!-- 数字娱乐产品 -->
+                    <div class="feature-card product-item" data-category="entertainment">
+                        <h4>🎵 网易云音乐</h4>
+                        <p><strong>企业：</strong>网易公司</p>
+                        <p><strong>技术特点：</strong>AI推荐、社交音乐平台</p>
+                        <p><strong>出海情况：</strong>在多个国家推出海外版本</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                    
+                    <div class="feature-card product-item" data-category="entertainment">
+                        <h4>📺 爱奇艺VR</h4>
+                        <p><strong>企业：</strong>爱奇艺</p>
+                        <p><strong>技术特点：</strong>VR内容制作与分发平台</p>
+                        <p><strong>出海情况：</strong>VR内容出口到欧美市场</p>
+                        <button class="btn">了解详情</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 案例分享 -->
+            <div class="subsection">
+                <h3>🌟 案例分享</h3>
+                <p>介绍企业科技产品的出海应用案例和市场表现</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card" style="border-left: 4px solid #28a745;">
+                        <h4>🚀 阿里云助力印尼数字化转型</h4>
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Crect width='60' height='40' fill='%23ff6600'/%3E%3Ctext x='30' y='25' text-anchor='middle' fill='white' font-size='12'%3EAlicloud%3C/text%3E%3C/svg%3E" alt="阿里云" style="margin-right: 15px;">
+                            <div>
+                                <strong>合作伙伴：</strong>印尼政府<br>
+                                <strong>项目规模：</strong>10亿美元
+                            </div>
+                        </div>
+                        <p><strong>项目概述：</strong>阿里云为印尼政府建设国家级云计算基础设施，支撑1000+政务应用，服务2.7亿人口。</p>
+                        <p><strong>技术方案：</strong>混合云架构、AI大数据分析、安全防护体系</p>
+                        <p><strong>实施效果：</strong>政务效率提升70%，为印尼节省IT成本30%</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    
+                    <div class="feature-card" style="border-left: 4px solid #007bff;">
+                        <h4>🛡️ 海康威视护航新加坡智慧城市</h4>
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Crect width='60' height='40' fill='%230066cc'/%3E%3Ctext x='30' y='25' text-anchor='middle' fill='white' font-size='10'%3EHikvision%3C/text%3E%3C/svg%3E" alt="海康威视" style="margin-right: 15px;">
+                            <div>
+                                <strong>合作伙伴：</strong>新加坡政府<br>
+                                <strong>项目规模：</strong>5亿美元
+                            </div>
+                        </div>
+                        <p><strong>项目概述：</strong>为新加坡提供全岛智能安防解决方案，建设全球最先进的城市安全体系。</p>
+                        <p><strong>技术方案：</strong>AI视频分析、人脸识别、行为识别、预警系统</p>
+                        <p><strong>实施效果：</strong>犯罪率下降40%，应急响应时间缩短60%</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    
+                    <div class="feature-card" style="border-left: 4px solid #ffc107;">
+                        <h4>💰 蚂蚁金服赋能泰国数字支付</h4>
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Crect width='60' height='40' fill='%23ffaa00'/%3E%3Ctext x='30' y='25' text-anchor='middle' fill='white' font-size='12'%3EAntFinance%3C/text%3E%3C/svg%3E" alt="蚂蚁金服" style="margin-right: 15px;">
+                            <div>
+                                <strong>合作伙伴：</strong>泰国SCB银行<br>
+                                <strong>项目规模：</strong>2亿美元
+                            </div>
+                        </div>
+                        <p><strong>项目概述：</strong>与泰国最大银行合作推出TrueMoney钱包，推动泰国移动支付普及。</p>
+                        <p><strong>技术方案：</strong>移动支付、风控系统、数字信贷、区块链技术</p>
+                        <p><strong>实施效果：</strong>用户突破3000万，交易量增长300%</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    
+                    <div class="feature-card" style="border-left: 4px solid #e91e63;">
+                        <h4>🎮 网易游戏征服欧美市场</h4>
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Crect width='60' height='40' fill='%23cc0000'/%3E%3Ctext x='30' y='25' text-anchor='middle' fill='white' font-size='12'%3ENetEase%3C/text%3E%3C/svg%3E" alt="网易" style="margin-right: 15px;">
+                            <div>
+                                <strong>代表作品：</strong>荒野行动、第五人格<br>
+                                <strong>市场表现：</strong>全球下载量5亿+
+                            </div>
+                        </div>
+                        <p><strong>项目概述：</strong>网易自研游戏成功打入欧美主流市场，实现中国游戏"走出去"。</p>
+                        <p><strong>技术方案：</strong>自研游戏引擎、全球化运营、本地化适配</p>
+                        <p><strong>实施效果：</strong>海外收入占比达50%，用户遍布100+国家</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" style="background: linear-gradient(135deg, #2a5298, #1e3c72); padding: 15px 30px; font-size: 18px;">📖 查看更多成功案例</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="debuts" class="content-section">
+        <div class="main-content">
+            <h2 class="section-title">首发首秀</h2>
+            <div class="subsection">
+                <h3>创新成果展示</h3>
+                <p>展示博览会首发的创新技术与产品，以及相关政策扶持...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 在线客服浮动按钮 -->
+    <div class="floating-chat" onclick="openChat()">
+        💬
+    </div>
+
+    <script>
+        // 轮播图功能
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = n;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        // 自动轮播
+        setInterval(nextSlide, 5000);
+
+        // 内容切换功能
+        function showSection(sectionId) {
+            // 隐藏所有内容区域
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 显示指定内容区域
+            const targetSection = document.getElementById(sectionId);
+            targetSection.classList.add('active');
+
+            // 平滑滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+   // 数贸在线子模块切换
+        function showOnlineSection(sectionId) {
+            // 更新导航按钮状态
+            const navBtns = document.querySelectorAll('.online-nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = '#e9ecef';
+                btn.style.color = '#333';
+            });
+            
+            event.target.classList.add('active');
+            event.target.style.background = '#2a5298';
+            event.target.style.color = 'white';
+
+            // 隐藏所有在线子模块
+            const onlineSections = document.querySelectorAll('.online-section');
+            onlineSections.forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+
+            // 显示指定子模块
+            const targetSection = document.getElementById('online-' + sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+            }
+        }
+
+        // 展开语录功能
+        function expandQuote(year) {
+            alert(`展开${year}年总书记重要讲话全文...`);
+        }
+
+        // 在线客服功能
+        function openChat() {
+            alert('正在连接智能客服，请稍候...');
+        }
+
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.subsection');
+            sections.forEach(section => {
+                section.classList.add('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>
